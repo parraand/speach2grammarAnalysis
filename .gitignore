@@ -1,0 +1,11 @@
+# Ignorar token
+HFtoken.txt
+
+# Ignorar archivos temporales
+*.log
+*.tmp
+
+# Ignorar archivos de entorno de Python
+.env
+__pycache__/
+*.pyc
