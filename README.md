@@ -74,7 +74,7 @@ Development of a modular pipeline that:
 
 ## Project Structure
 
-.
+
 │ .gitignore
 │ HFtoken.txt
 │ README.md
