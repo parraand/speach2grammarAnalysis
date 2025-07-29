@@ -75,28 +75,29 @@ Development of a modular pipeline that:
 ## Project Structure
 
 
-│ .gitignore
-│ HFtoken.txt
-│ README.md
-│ requirements.txt
+.
+├── .gitignore
+├── HFtoken.txt
+├── README.md
+├── requirements.txt
 │
-├───data
-│ audio_full.m4a
-│ transcript_gold.csv
-│ transcript_raw.csv
+├── data
+│   ├── audio_full.m4a
+│   ├── transcript_gold.csv
+│   └── transcript_raw.csv
 │
-├───docs
-│ Test report Andres Parra.pdf
+├── docs
+│   └── Test report Andres Parra.pdf
 │
-├───fragmentos
-│ audio_parte_*.m4a
+├── fragmentos
+│   └── audio_parte_*.m4a
 │
-├───src
-│ development.py
-│ Notebook_test_andres_parra.ipynb
+├── src
+│   ├── development.py
+│   └── Notebook_test_andres_parra.ipynb
 │
-└───temp
-fragmentos_temp.m4a
+└── temp
+    └── fragmentos_temp.m4a
 
 ---
 
