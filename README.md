@@ -1,78 +1,78 @@
-# Pipeline de Transcripción, Corrección y Análisis de Audio Educativo
->Este documento presenta la descripción de la solución, la arquitectura y las principales consideraciones y pasos requeridos para realizar la ejecución e instalación del pipeline de transcripción, corrección gramatical y análisis de errores a partir de un archivo de audio.
+# Audio Transcription, Grammar Correction, and Analysis Pipeline
+>This document presents the description of the solution, architecture, and main considerations and steps required to run and install the pipeline for audio transcription, grammar correction, and error analysis.
 
-También, en los siguientes links se encuentra la información documental asociada al proyecto:
+Additional documentation and resources related to the project:
 
-[Informe Técnico (PDF)](docs/Test%20report%20Andres%20Parra.pdf)
+[Technical Report (PDF)](docs/Test%20report%20Andres%20Parra.pdf)
 
-[Carpeta de Datos](data/)
+[Data Folder](data/)
 
-[Notebook de Desarrollo](src/Notebook_test_andres_parra.ipynb)
+[Development Notebook](src/Notebook_test_andres_parra.ipynb)
 
-[Video Demo](Pendiente)
-
----
-
-## Tabla de Contenidos
-* [Descripción de la solución](#descripción-de-la-solución)
-* [Arquitectura lógica de la solución](#arquitectura-lógica-de-la-solución)
-* [Estructura del proyecto](#estructura-del-proyecto)
-* [Instrucciones para ejecución](#instrucciones-para-ejecución)
-* [Requerimientos](#requerimientos)
-* [Autores](#autores)
+[Demo Video](Pending)
 
 ---
 
-## Descripción de la solución
-
-### Objetivo General
-- Implementar un pipeline completo que permita la transcripción automática, corrección gramatical y análisis de errores de un archivo de audio educativo, evaluando la calidad mediante métricas lingüísticas y proponiendo mejoras pedagógicas.
-
-### Objetivos Específicos
-- Generar transcripciones automáticas usando **Whisper** y **WhisperX**.
-- Crear un conjunto de referencia (Gold Set) para evaluar la precisión del modelo.
-- Aplicar modelos LLM (T5, BART) para corrección gramatical.
-- Medir desempeño con métricas **WER** y **CER** antes y después de la corrección.
-- Extraer errores gramaticales frecuentes y proponer reglas de negocio para retroalimentación.
-
-### Reto
-Evaluar y mejorar la calidad de transcripciones automáticas de un archivo de audio de 5 minutos, generando insights que sirvan como insumo para estrategias pedagógicas y detección de errores comunes.
-
-### Solución
-Desarrollo de un pipeline modular que:
-- Segmenta y procesa el audio.
-- Genera transcripciones automáticas.
-- Aplica corrección gramatical con modelos pre-entrenados.
-- Evalúa la mejora con métricas cuantitativas.
-- Extrae patrones de errores frecuentes y sugiere ejercicios específicos.
-
-### Impacto Potencial
-- Reducción en tiempo de revisión manual.
-- Mejora en precisión de transcripciones para contextos educativos.
-- Posible integración con sistemas de enseñanza personalizada.
+## Table of Contents
+* [Solution Description](#solution-description)
+* [Logical Architecture](#logical-architecture)
+* [Project Structure](#project-structure)
+* [Execution Instructions](#execution-instructions)
+* [Requirements](#requirements)
+* [Authors](#authors)
 
 ---
 
-## Arquitectura lógica de la solución
-**Datos de Entrada**
-- Audio completo (`audio_full.m4a`) y fragmentos (`audio_parte_*.m4a`).
-- Conjunto de referencia manual (`transcript_gold.csv`).
+## Solution Description
 
-**Pipeline**
-1. **Transcripción automática** con Whisper y WhisperX.
-2. **Corrección gramatical** con modelos T5 y BART.
-3. **Evaluación** de precisión mediante WER y CER.
-4. **Análisis de errores** para generar recomendaciones.
-5. **Diarización opcional** para separar intervenciones por hablante.
+### General Objective
+- Implement a complete pipeline for **automatic transcription**, **grammar correction**, and **error analysis** of an educational audio file, evaluating transcription quality with linguistic metrics and proposing pedagogical improvements.
 
-**Salida**
-- Transcripciones corregidas (`transcript_corrected.csv`).
-- Métricas de desempeño.
-- Reporte técnico (`Test report Andres Parra.pdf`).
+### Specific Objectives
+- Generate automatic transcriptions using **Whisper** and **WhisperX**.
+- Create a **Gold Set** for performance evaluation.
+- Apply LLM models (T5, BART) for grammar correction.
+- Measure performance using **WER** and **CER** before and after correction.
+- Identify frequent grammatical errors and define business rules for targeted exercises.
+
+### Challenge
+Evaluate and improve the quality of automatic transcriptions of a 5-minute educational audio file, generating insights to support **pedagogical strategies** and the detection of common mistakes.
+
+### Solution
+Development of a modular pipeline that:
+- Segments and processes the audio.
+- Generates automatic transcriptions.
+- Applies grammar correction using pre-trained models.
+- Evaluates improvement with quantitative metrics.
+- Extracts common error patterns and recommends targeted exercises.
+
+### Potential Impact
+- Reduction in manual review time.
+- Improved transcription accuracy for educational contexts.
+- Possible integration into **personalized learning systems**.
 
 ---
 
-## Estructura del proyecto
+## Logical Architecture
+**Input Data**
+- Full audio file (`audio_full.m4a`) and audio fragments (`audio_parte_*.m4a`).
+- Gold reference transcript (`transcript_gold.csv`).
+
+**Pipeline Steps**
+1. **Automatic Transcription** using Whisper and WhisperX.
+2. **Grammar Correction** using T5 and BART models.
+3. **Evaluation** of accuracy using WER and CER.
+4. **Error Analysis** to generate targeted recommendations.
+5. **Optional Diarization** for speaker segmentation.
+
+**Output**
+- Corrected transcriptions (`transcript_corrected.csv`).
+- Performance metrics.
+- Technical report (`Test report Andres Parra.pdf`).
+
+---
+
+## Project Structure
 
 .
 │ .gitignore
@@ -98,80 +98,74 @@ Desarrollo de un pipeline modular que:
 └───temp
 fragmentos_temp.m4a
 
-yaml
-Copiar
-Editar
+---
+
+## Execution Instructions
+
+### Option 1: Run with Python (Virtual Environment)
+
+1. **Create a virtual environment:**
+    ```bash
+    conda create --name audio_env python=3.9
+    conda activate audio_env
+    ```
+
+2. **Install dependencies:**
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+3. **Run the pipeline:**
+    ```bash
+    python src/development.py
+    ```
+
+4. **Or run from Jupyter Notebook:**
+    ```bash
+    jupyter notebook src/Notebook_test_andres_parra.ipynb
+    ```
 
 ---
 
-## Instrucciones para ejecución
+### Option 2: Run with Docker (Optional)
 
-### Forma 1: Ejecución con Python (Ambiente Virtual)
-1. Crear ambiente virtual:
-```bash
-conda create --name audio_env python=3.9
-conda activate audio_env
-Instalar dependencias:
+1. **Build Docker image:**
+    ```bash
+    docker build -t audio_pipeline .
+    ```
 
-bash
-Copiar
-Editar
-pip install -r requirements.txt
-Ejecutar pipeline:
+2. **Run the container:**
+    ```bash
+    docker run -it --name audio_pipeline audio_pipeline
+    ```
 
-bash
-Copiar
-Editar
-python src/development.py
-O desde Jupyter Notebook:
+---
 
-bash
-Copiar
-Editar
-jupyter notebook src/Notebook_test_andres_parra.ipynb
-Forma 2: Ejecución con Docker (Opcional)
-Compilar imagen:
+## Requirements
 
-bash
-Copiar
-Editar
-docker build -t audio_pipeline .
-Ejecutar contenedor:
+### Hardware
+- **RAM**: Minimum 8 GB  
+- **GPU**: NVIDIA GPU (optional, recommended for acceleration)  
+- **Disk space**: 5 GB  
 
-bash
-Copiar
-Editar
-docker run -it --name audio_pipeline audio_pipeline
-Requerimientos
-Hardware
-RAM: 8 GB mínimo
+### Software
+- Python 3.9  
+- Conda or virtual environment  
+- Docker (optional)  
 
-GPU NVIDIA (opcional, recomendado para aceleración)
+### Python Libraries
+- pandas  
+- numpy  
+- torch  
+- transformers  
+- librosa  
+- jiwer  
+- seaborn  
 
-Espacio: 5 GB
+---
 
-Software
-Python 3.9
+## Authors
 
-Conda o entorno virtual
-
-Docker (opcional)
-
-Librerías
-pandas
-
-numpy
-
-torch
-
-transformers
-
-librosa
-
-jiwer
-
-seaborn
-
-Autores
-Organización	Nombre	Rol	Contacto
-Proyecto Individual	Andres Parra Rodriguez	Data Scientist	LinkedIn
+| Organization       | Name                   | Role            | Contact |
+|--------------------|------------------------|-----------------|---------|
+| Individual Project | Andres Parra Rodriguez | Data Scientist  | [LinkedIn](https://www.linkedin.com/in/andresparrarod/) |
