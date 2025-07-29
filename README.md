@@ -72,32 +72,34 @@ Development of a modular pipeline that:
 
 ---
 
+
 ## Project Structure
 
 
 .
-├── .gitignore
-├── HFtoken.txt
-├── README.md
-├── requirements.txt
+├── .gitignore                 # Git ignore file
+├── HFtoken.txt                # Hugging Face API token
+├── README.md                  # Project documentation
+├── requirements.txt           # Python dependencies
 │
-├── data
-│   ├── audio_full.m4a
-│   ├── transcript_gold.csv
-│   └── transcript_raw.csv
+├── data                       # Input data and gold set
+│   ├── audio_full.m4a          # Original audio (5 minutes)
+│   ├── transcript_gold.csv     # Manual reference transcription (gold set)
+│   └── transcript_raw.csv      # Raw automatic transcription
 │
-├── docs
+├── docs                       # Documentation and reports
 │   └── Test report Andres Parra.pdf
 │
-├── fragmentos
+├── fragmentos                 # Audio fragments used for testing
 │   └── audio_parte_*.m4a
 │
-├── src
+├── src                        # Source code and notebooks
 │   ├── development.py
 │   └── Notebook_test_andres_parra.ipynb
 │
-└── temp
+└── temp                       # Temporary files
     └── fragmentos_temp.m4a
+
 
 ---
 
