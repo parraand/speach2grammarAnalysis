@@ -75,7 +75,7 @@ Development of a modular pipeline that:
 
 ## Project Structure
 
-
+```
 .
 ├── .gitignore                 # Git ignore file
 ├── HFtoken.txt                # Hugging Face API token
@@ -99,7 +99,7 @@ Development of a modular pipeline that:
 │
 └── temp                       # Temporary files
     └── fragmentos_temp.m4a
-
+```
 
 ---
 
